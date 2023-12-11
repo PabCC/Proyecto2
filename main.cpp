@@ -1,7 +1,72 @@
 #include <iostream>
 #include <fstream>
+#include <sstream> // Para usar stringstream
+#include <vector>
 
 using namespace std;
+
+
+
+struct Estudiante {
+    string nombre;
+    string apellidoPaterno;
+    string apellidoMaterno;
+    string codigoEstudiante;
+    string CI;
+};
+
+void mostrarContenidoCSV(const string& archivo) {
+    ifstream archivoCSV(archivo);
+
+    if (!archivoCSV.is_open()) {
+        cout << "No se pudo abrir el archivo " << archivo << endl;
+        return;
+    }
+
+    vector<Estudiante> estudiantes;
+    string linea;
+
+    // Ignorar la primera línea (encabezados)
+    getline(archivoCSV, linea);
+
+    while (getline(archivoCSV, linea)) {
+        stringstream ss(linea);
+        string token;
+        vector<string> tokens;
+
+        while (getline(ss, token, ',')) {
+            tokens.push_back(token);
+        }
+
+        // Verificar si hay suficientes elementos en la línea
+        if (tokens.size() == 5) {
+            Estudiante estudiante{
+                tokens[0], // Nombre
+                tokens[1], // Apellido Paterno
+                tokens[2], // Apellido Materno
+                tokens[3], // Codigo Estudiante
+                tokens[4]  // CI
+            };
+
+            estudiantes.push_back(estudiante);
+        }
+    }
+
+    // Mostrar el contenido por consola
+    for (const auto& estudiante : estudiantes) {
+        cout << "Nombre: " << estudiante.nombre << ", "
+             << "Apellido Paterno: " << estudiante.apellidoPaterno << ", "
+             << "Apellido Materno: " << estudiante.apellidoMaterno << ", "
+             << "Codigo Estudiante: " << estudiante.codigoEstudiante << ", "
+             << "CI: " << estudiante.CI << endl;
+    
+            cout << endl;  // Agregar una línea en blanco entre estudiantes
+
+    }
+
+    archivoCSV.close();
+}
+
 
 
 void mostrarMenuColegio1() {
@@ -21,12 +86,28 @@ void mostrarMenuColegio1() {
 
         switch (curso) {
             case 1:
+                cout << "Ha seleccionado el Curso " << curso << " en La Salle" << endl;
+                mostrarContenidoCSV("/home/mycom/proyecto2/Colegio_La_Salle/1.csv");
+                break;
             case 2:
+                cout << "Ha seleccionado el Curso " << curso << " en La Salle" << endl;
+                mostrarContenidoCSV("/home/mycom/proyecto2/Colegio_La_Salle/2.csv");
+                break;
             case 3:
+                cout << "Ha seleccionado el Curso " << curso << " en La Salle" << endl;
+                mostrarContenidoCSV("/home/mycom/proyecto2/Colegio_La_Salle/3.csv");
+                break;
             case 4:
+                cout << "Ha seleccionado el Curso " << curso << " en La Salle" << endl;
+                mostrarContenidoCSV("/home/mycom/proyecto2/Colegio_La_Salle/4.csv");
+                break;
             case 5:
+                cout << "Ha seleccionado el Curso " << curso << " en La Salle" << endl;
+                mostrarContenidoCSV("/home/mycom/proyecto2/Colegio_La_Salle/5.csv");
+                break;
             case 6:
                 cout << "Ha seleccionado el Curso " << curso << " en La Salle" << endl;
+                mostrarContenidoCSV("/home/mycom/proyecto2/Colegio_La_Salle/6.csv");
                 break;
             case 0:
                 cout << "Volviendo al menú principal." << endl;
@@ -54,12 +135,28 @@ void mostrarMenuColegio2() {
 
         switch (curso) {
             case 1:
+                cout << "Ha seleccionado el Curso " << curso << " en Colegio Santo" << endl;
+                mostrarContenidoCSV("/home/mycom/proyecto2/Colegio_Santo/1.csv");
+                break;
             case 2:
+                cout << "Ha seleccionado el Curso " << curso << " en Colegio Santo" << endl;
+                mostrarContenidoCSV("/home/mycom/proyecto2/Colegio_Santo/2.csv");
+                break;
             case 3:
+                cout << "Ha seleccionado el Curso " << curso << " en Colegio Santo" << endl;
+                mostrarContenidoCSV("/home/mycom/proyecto2/Colegio_Santo/3.csv");
+                break;
             case 4:
+                cout << "Ha seleccionado el Curso " << curso << " en Colegio Santo" << endl;
+                mostrarContenidoCSV("/home/mycom/proyecto2/Colegio_Santo/4.csv");
+                break;
             case 5:
+                cout << "Ha seleccionado el Curso " << curso << " en Colegio Santo" << endl;
+                mostrarContenidoCSV("/home/mycom/proyecto2/Colegio_Santo/5.csv");
+                break;
             case 6:
-                cout << "Ha seleccionado el Curso " << curso << " en La Salle" << endl;
+                cout << "Ha seleccionado el Curso " << curso << " en Colegio Santo" << endl;
+                mostrarContenidoCSV("/home/mycom/proyecto2/Colegio_Santo/6.csv");
                 break;
             case 0:
                 cout << "Volviendo al menú principal." << endl;
@@ -88,12 +185,28 @@ void mostrarMenuColegio3() {
 
         switch (curso) {
             case 1:
+                cout << "Ha seleccionado el Curso " << curso << " en el Colegio Ventos" << endl;
+                mostrarContenidoCSV("/home/mycom/proyecto2/Colegio_Ventos/1.csv");
+                break;
             case 2:
+                cout << "Ha seleccionado el Curso " << curso << " en el Colegio Ventos" << endl;
+                mostrarContenidoCSV("/home/mycom/proyecto2/Colegio_Ventos/2.csv");
+                break;
             case 3:
+                cout << "Ha seleccionado el Curso " << curso << " en el Colegio Ventos" << endl;
+                mostrarContenidoCSV("/home/mycom/proyecto2/Colegio_Ventos/3.csv");
+                break;
             case 4:
+                cout << "Ha seleccionado el Curso " << curso << " en el Colegio Ventos" << endl;
+                mostrarContenidoCSV("/home/mycom/proyecto2/Colegio_Ventos/4.csv");
+                break;
             case 5:
+                cout << "Ha seleccionado el Curso " << curso << " en el Colegio Ventos" << endl;
+                mostrarContenidoCSV("/home/mycom/proyecto2/Colegio_Ventos/5.csv");
+                break;
             case 6:
-                cout << "Ha seleccionado el Curso " << curso << " en La Salle" << endl;
+                cout << "Ha seleccionado el Curso " << curso << " en el Colegio Ventos" << endl;
+                mostrarContenidoCSV("/home/mycom/proyecto2/Colegio_Ventos/6.csv");
                 break;
             case 0:
                 cout << "Volviendo al menú principal." << endl;
